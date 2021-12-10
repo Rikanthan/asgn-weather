@@ -1,12 +1,12 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import Image from '../cld.png';
 
-export default function WeatherCard() {
-  return (
+const WeatherCard =(weatherDetails) =>
+  (
     <Grid
       container
       md={4}
-      style={{ border: 1, borderRadius: 5,backgroundColor:"lightblue", backgroundImage: `url(${Image})`,margin: 10 }}
+      style={{ border: 1, borderRadius: 5,backgroundColor:"#388ee7", backgroundImage: `url(${Image})`,margin: 10 }}
       direction="column"
       justifyContent="space-between"
       alignItems="baseline"
@@ -33,8 +33,8 @@ export default function WeatherCard() {
           justifyContent="space-between"
           alignItems="baseline"
         >
-          <Typography variant="h6">Colombo,LK</Typography>
-          <Typography variant="body2">9.19 am,feb 8</Typography>
+          <Typography variant="h6">{weatherDetails.city},{weatherDetails.country}</Typography>
+          <Typography variant="body2">feb 3, 2012</Typography>
         </Grid>
         <Grid
           item
@@ -43,9 +43,9 @@ export default function WeatherCard() {
           textAlign="left"
           alignItems="baseline"
         >
-          <Typography variant="h4">27c</Typography>
-          <Typography variant="body2">Temp Min:</Typography>
-          <Typography variant="body2">Temp Max:</Typography>
+          <Typography variant="h4">{weatherDetails.temperature}</Typography>
+          <Typography variant="body2">Temp Min:{weatherDetails.tempmin}</Typography>
+          <Typography variant="body2">Temp Max:{weatherDetails.tempmax}</Typography>
         </Grid>
       </Grid>
       <Grid
@@ -53,7 +53,7 @@ export default function WeatherCard() {
         direction="row"
         justifyContent="space-between"
         alignItems="baseline"
-        style={{ padding: 10, backgroundColor: "black", borderRadius: 5 }}
+        style={{ padding: 10, backgroundColor: "#383b47", borderRadius: 5 }}
       >
         <Grid
           item
@@ -63,13 +63,13 @@ export default function WeatherCard() {
           alignItems="baseline"
         >
           <Typography variant="body2" color="white">
-            Pressure
+           Pressure:{weatherDetails.pressure}hPa
           </Typography>
           <Typography variant="body2" color="white">
-            Humidity
+           Humidity: {weatherDetails.huminity}%
           </Typography>
           <Typography variant="body2" color="white">
-            Visibility:
+           Visibility: {weatherDetails.visibility/1000}km
           </Typography>
         </Grid>
         <Divider
@@ -86,13 +86,7 @@ export default function WeatherCard() {
           alignItems="baseline"
         >
           <Typography variant="body2" color="white">
-            Pressure
-          </Typography>
-          <Typography variant="body2" color="white">
-            Humidity
-          </Typography>
-          <Typography variant="body2" color="white">
-            Visibility:
+            {weatherDetails.speed}{"m/s "}{weatherDetails.degree}{"Degree"}
           </Typography>
         </Grid>
         <Divider
@@ -109,16 +103,15 @@ export default function WeatherCard() {
           alignItems="baseline"
         >
           <Typography variant="body2" color="white">
-            Pressure
+           {"Sunrise:"}{weatherDetails.sunrise}
           </Typography>
           <Typography variant="body2" color="white">
-            Humidity
-          </Typography>
-          <Typography variant="body2" color="white">
-            Visibility:
+          {"Sunset:"}{weatherDetails.sunset}
           </Typography>
         </Grid>
       </Grid>
     </Grid>
-  );
-}
+  )
+
+  export default WeatherCard;
+
