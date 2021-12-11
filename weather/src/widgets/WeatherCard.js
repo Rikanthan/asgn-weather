@@ -127,13 +127,13 @@ export default function WeatherCard  ({ weatherDetails }) {
             alignItems="baseline"
           >
             <Typography variant="body2" color="white">
-              Pressure:{weatherDetails.main.pressure}hPa
+              {"Pressure: "}{weatherDetails.main.pressure}hPa
             </Typography>
             <Typography variant="body2" color="white">
-              Humidity: {weatherDetails.main.humidity}%
+             {"Humidity: "}  {weatherDetails.main.humidity}%
             </Typography>
             <Typography variant="body2" color="white">
-              Visibility: {weatherDetails.visibility / 1000}km
+              {"Visibility: "} {weatherDetails.visibility / 1000}km
             </Typography>
           </Grid>
           <Divider
@@ -154,7 +154,7 @@ export default function WeatherCard  ({ weatherDetails }) {
               {weatherDetails.wind.speed}
               {"m/s "}
               {weatherDetails.wind.deg}
-              {"Degree"}
+              {" Degree"}
             </Typography>
           </Grid>
           <Divider
