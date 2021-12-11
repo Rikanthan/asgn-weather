@@ -1,6 +1,7 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import Image from "../cld.png";
 import { TiLocationArrowOutline } from "react-icons/ti";
+import { FaBackward } from "react-icons/fa";
 
 function hashCode(str) {
   var hash = 0;
@@ -18,44 +19,21 @@ function intToRGB(i) {
   return "#" + "00000".substring(0, 6 - c.length) + c;
 }
 
-const WeatherCard = ( {weatherDetails} ) => ( console.log(weatherDetails),
+const SingleWeatherCard = ({ weatherDetails }) => (
   <Grid
     container
-    md={4}
+    md={6}
     style={{
       border: 1,
       borderRadius: 5,
       backgroundColor: intToRGB(hashCode(weatherDetails.name+weatherDetails.sys.country)),
-      backgroundImage: `url(${Image})`,
       margin: 10,
     }}
     direction="column"
     justifyContent="space-between"
-    alignItems="start"
+    alignItems="center"
   >
-    <Grid
-      container
-      direction="row"
-      justifyContent="space-between"
-      alignItems="baseline"
-    >
-      <Typography />
-      <Typography>X</Typography>
-    </Grid>
-    <Grid
-      container
-      direction="row"
-      justifyContent="space-between"
-      alignItems="start"
-    >
-      <Grid
-        item
-        style={{ padding: 10 }}
-        direction="column"
-        justifyContent="space-between"
-        alignItems="baseline"
-      >
-        <Typography variant="h6">
+     <Typography variant="h6">
           {weatherDetails.name},{weatherDetails.sys.country}
         </Typography>
         <Typography variant="body2">
@@ -68,9 +46,30 @@ const WeatherCard = ( {weatherDetails} ) => ( console.log(weatherDetails),
           'en-US',{day:"numeric" ,month:"short"}
           )}
         </Typography>
+    <Grid
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="baseline"
+    >
+     <FaBackward/>
+    </Grid>
+    <Grid
+      container
+      direction="row"
+      justifyContent="center"
+      alignItems="start"
+    >
+      <Grid
+        item
+        style={{  }}
+        direction="column"
+        justifyContent="space-between"
+        alignItems="baseline"
+      >
         <Grid
           container
-          direction="row"
+          direction="column"
           justifyContent="space-between"
           alignItems="center"
         >
@@ -83,9 +82,12 @@ const WeatherCard = ( {weatherDetails} ) => ( console.log(weatherDetails),
           </Typography>
         </Grid>
       </Grid>
+      <Divider orientation="vertical" variant="middle"
+       flexItem color="white" 
+       style={{marginLeft:30,marginRight:30}}/>
       <Grid
         item
-        style={{ paddingRight: 20, paddingBottom: 10 }}
+        style={{ paddingBottom: 10}}
         direction="column"
         textAlign="left"
         alignItems="baseline"
@@ -169,4 +171,4 @@ const WeatherCard = ( {weatherDetails} ) => ( console.log(weatherDetails),
   </Grid>
 );
 
-export default WeatherCard;
+export default SingleWeatherCard;
