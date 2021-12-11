@@ -5,6 +5,7 @@ import WeatherCard from "./widgets/WeatherCard";
 import { styled } from '@mui/material/styles';
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { FaLocationArrow} from "react-icons/fa";
 
 function App() {
   const [weather,setWeather] = useState([]);
@@ -30,8 +31,12 @@ useEffect(() => {
         justifyContent="center"
         alignItems="baseline"
       >
-         <WeatherCard 
-         weatherDetails={weather}/>
+        {(typeof weather.main != 'undefined') ? (
+          <WeatherCard 
+          weatherDetails={weather}/>
+        ):
+        null}
+         
           {/* // city={weather.name}
           // country={weather.sys.country}
           // temperature={weather.main.temp}

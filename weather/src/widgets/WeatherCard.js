@@ -1,6 +1,6 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import Image from '../cld.png';
-
+import { FaLocationArrow } from "react-icons/fa";
 const WeatherCard =({weatherDetails}) =>
   (
     <Grid
@@ -85,6 +85,7 @@ const WeatherCard =({weatherDetails}) =>
           textAlign="center"
           alignItems="baseline"
         >
+          <FaLocationArrow color="white"/>
           <Typography variant="body2" color="white">
             {weatherDetails.wind.speed}{"m/s "}{weatherDetails.wind.deg}{"Degree"}
           </Typography>
