@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import cities from "./constants/Cities";
 import SingleWeatherCard from "./widgets/WeatherCard2";
+import Dashboard from "./pages/Dashboard";
+import { HashRouter as Router, Routes, RouterProps, Route } from "react-router-dom";
+import ShowWeather from "./pages/ShowWeather";
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -27,93 +30,36 @@ function App() {
     const response = await axios.get(fronturl + id + backurl);
     const result = await response.data;
     console.log(fronturl + id + backurl);
-    //console.log(result);
     setWeather(result); 
-    console.log(weather);
-
   }
   useEffect(() => {
     fetchData();
-    console.log(weather)
+    setTimeout(()=>{
+      if('caches' in window){
+        caches.keys().then((names) => {
+                names.forEach(name => {
+                    caches.delete(name);
+                })
+            });
+          }
+      window.location.reload(true);
+    },3000000)
   }, []);
-
   return (
     <div className="App">
-      <Typography variant="h5" color="white">
+       <Grid
+        container
+        direction="row"
+        padding={5}
+        justifyContent="center"
+        alignItems="start"
+      >
+        <img src="http://openweathermap.org/img/wn/10d@2x.png"></img>
+      <Typography variant="h5" color="white" paddingTop={5}>
         Weather App
       </Typography>
-      <Grid
-        container
-        spacing={1}
-        direction="row"
-        justifyContent="center"
-        alignItems="baseline"
-      >
-        {/* {( weather.list.map((element,index)=> 
-         {
-          console.log(element.name);
-          console.log(index);
-           <WeatherCard 
-            weatherDetails={weather[0]}
-            />
-         } ))
-        } */}
-        
-        {(typeof weather.cnt != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails ={weather.list[0]}/>
-        ):
-        null}
-        {/* <div>
-          try {
-            <WeatherCard 
-          weatherDetails={weather.list[0]}/>
-          } catch (error) {
-            <WeatherCard 
-          weatherDetails={weather.list[0]}/>
-          }
-          </div> */}
-          
-      
-        {/* { weather != undefined ? (
-          
-        ) : null} */}
-        {/* {(typeof weather.list[1] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[1]}/>
-        ):
-        null}
-        {(typeof weather.list[2] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[2]}/>
-        ):
-        null}
-        {(typeof weather.list[3] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[3]}/>
-        ):
-        null}
-         {(typeof weather.list[4] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[4]}/>
-        ):
-        null}
-        {(typeof weather.list[5] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[5]}/>
-        ):
-        null}
-         {(typeof weather.list[6] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[6]}/>
-        ):
-        null}
-        {(typeof weather.list[7] != 'undefined') ? (
-          <WeatherCard 
-          weatherDetails={weather.list[7]}/>
-        ):
-        null} */}
       </Grid>
+      <Dashboard weather={weather}/>
     </div>
   );
 }

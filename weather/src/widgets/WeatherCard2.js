@@ -1,7 +1,7 @@
-import { Divider, Grid, Typography } from "@mui/material";
-import Image from "../cld.png";
+import { Divider, Grid, IconButton, Typography } from "@mui/material";
+import { AiOutlineArrowLeft} from "react-icons/ai";
 import { TiLocationArrowOutline } from "react-icons/ti";
-import { FaBackward } from "react-icons/fa";
+
 
 function hashCode(str) {
   var hash = 0;
@@ -19,7 +19,7 @@ function intToRGB(i) {
   return "#" + "00000".substring(0, 6 - c.length) + c;
 }
 
-const SingleWeatherCard = ({ weatherDetails }) => (
+const SingleWeatherCard = ({ weatherDetails }, props) => (
   <Grid
     container
     md={6}
@@ -27,16 +27,26 @@ const SingleWeatherCard = ({ weatherDetails }) => (
       border: 1,
       borderRadius: 5,
       backgroundColor: intToRGB(hashCode(weatherDetails.name+weatherDetails.sys.country)),
-      margin: 10,
+      marginBottom: 120,
     }}
     direction="column"
     justifyContent="space-between"
     alignItems="center"
   >
-     <Typography variant="h6">
+      <Grid
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="baseline"
+    >
+        <IconButton onClick={props.onClick}>
+        <AiOutlineArrowLeft color="white"/>
+        </IconButton>
+    </Grid>
+     <Typography variant="h6" color={"white"}>
           {weatherDetails.name},{weatherDetails.sys.country}
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color={"white"}>
         {new Date(weatherDetails.dt * 1000).toLocaleTimeString(
             "en-IN",
             { hour: "2-digit", minute: "2-digit" },
@@ -46,14 +56,7 @@ const SingleWeatherCard = ({ weatherDetails }) => (
           'en-US',{day:"numeric" ,month:"short"}
           )}
         </Typography>
-    <Grid
-      container
-      direction="row"
-      justifyContent="space-between"
-      alignItems="baseline"
-    >
-     <FaBackward/>
-    </Grid>
+    
     <Grid
       container
       direction="row"
@@ -62,7 +65,6 @@ const SingleWeatherCard = ({ weatherDetails }) => (
     >
       <Grid
         item
-        style={{  }}
         direction="column"
         justifyContent="space-between"
         alignItems="baseline"
@@ -72,33 +74,34 @@ const SingleWeatherCard = ({ weatherDetails }) => (
           direction="column"
           justifyContent="space-between"
           alignItems="center"
+          style={{paddingBottom: 30,paddingTop:30}}
         >
           <img
             src={`http://openweathermap.org/img/wn/${weatherDetails.weather[0].icon}@2x.png`}
             width={50}
           ></img>
-          <Typography variant="body1">
+          <Typography variant="body1" color={"white"}>
             {weatherDetails.weather[0].description}
           </Typography>
         </Grid>
       </Grid>
       <Divider orientation="vertical" variant="middle"
        flexItem color="white" 
-       style={{marginLeft:30,marginRight:30}}/>
+       style={{margin:30}}/>
       <Grid
         item
-        style={{ paddingBottom: 10}}
+        style={{ paddingBottom: 30,paddingTop:30}}
         direction="column"
         textAlign="left"
         alignItems="baseline"
       >
-        <Typography variant="h4" paddingBottom={2}>
+        <Typography variant="h4" paddingBottom={2} color={"white"}> 
           {weatherDetails.main.temp}°C
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color={"white"}>
           Temp Min:{weatherDetails.main.temp_min}°C
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color={"white"}>
           Temp Max:{weatherDetails.main.temp_max}°C
         </Typography>
       </Grid>
@@ -108,7 +111,7 @@ const SingleWeatherCard = ({ weatherDetails }) => (
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      style={{ padding: 10, backgroundColor: "#383b47", borderRadius: 5 }}
+      style={{ padding: 40, backgroundColor: "#383b47", borderRadius: 5 }}
     >
       <Grid
         item
