@@ -1,7 +1,7 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import Image from '../cld.png';
 
-const WeatherCard =(weatherDetails) =>
+const WeatherCard =({weatherDetails}) =>
   (
     <Grid
       container
@@ -33,7 +33,7 @@ const WeatherCard =(weatherDetails) =>
           justifyContent="space-between"
           alignItems="baseline"
         >
-          <Typography variant="h6">{weatherDetails.city},{weatherDetails.country}</Typography>
+          <Typography variant="h6">{weatherDetails.name},{weatherDetails.sys.country}</Typography>
           <Typography variant="body2">feb 3, 2012</Typography>
         </Grid>
         <Grid
@@ -43,9 +43,9 @@ const WeatherCard =(weatherDetails) =>
           textAlign="left"
           alignItems="baseline"
         >
-          <Typography variant="h4">{weatherDetails.temperature}</Typography>
-          <Typography variant="body2">Temp Min:{weatherDetails.tempmin}</Typography>
-          <Typography variant="body2">Temp Max:{weatherDetails.tempmax}</Typography>
+          <Typography variant="h4">{weatherDetails.main.temp}°C</Typography>
+          <Typography variant="body2">Temp Min:{weatherDetails.main.temp_min}°C</Typography>
+          <Typography variant="body2">Temp Max:{weatherDetails.main.temp_max}°C</Typography>
         </Grid>
       </Grid>
       <Grid
@@ -63,10 +63,10 @@ const WeatherCard =(weatherDetails) =>
           alignItems="baseline"
         >
           <Typography variant="body2" color="white">
-           Pressure:{weatherDetails.pressure}hPa
+           Pressure:{weatherDetails.main.pressure}hPa
           </Typography>
           <Typography variant="body2" color="white">
-           Humidity: {weatherDetails.huminity}%
+           Humidity: {weatherDetails.main.humidity}%
           </Typography>
           <Typography variant="body2" color="white">
            Visibility: {weatherDetails.visibility/1000}km
@@ -86,7 +86,7 @@ const WeatherCard =(weatherDetails) =>
           alignItems="baseline"
         >
           <Typography variant="body2" color="white">
-            {weatherDetails.speed}{"m/s "}{weatherDetails.degree}{"Degree"}
+            {weatherDetails.wind.speed}{"m/s "}{weatherDetails.wind.deg}{"Degree"}
           </Typography>
         </Grid>
         <Divider
@@ -102,12 +102,12 @@ const WeatherCard =(weatherDetails) =>
           textAlign="right"
           alignItems="baseline"
         >
-          <Typography variant="body2" color="white">
+          {/* <Typography variant="body2" color="white">
            {"Sunrise:"}{weatherDetails.sunrise}
           </Typography>
           <Typography variant="body2" color="white">
           {"Sunset:"}{weatherDetails.sunset}
-          </Typography>
+          </Typography> */}
         </Grid>
       </Grid>
     </Grid>
