@@ -6,14 +6,29 @@ import { styled } from '@mui/material/styles';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { FaLocationArrow} from "react-icons/fa";
+import cities from "./constants/Cities";
 
 function App() {
   const [weather,setWeather] = useState([]);
+  const fronturl = "http://api.openweathermap.org/data/2.5/group?id=";
+  const backurl = "&units=metric&appid=067ad514cf62f9ba62b5ea5d5ffa57d1";
+  let id ="";
+  function setUrl()
+  {
+    for(let i=0; i<cities.length; i++)
+    {
+      id = id + cities[i].CityCode+",";
+    }
+    return id;
+  }
 
  async function fetchData()
  {
-   const response = await axios.get("https://api.openweathermap.org/data/2.5/weather?id=524901&units=metric&appid=067ad514cf62f9ba62b5ea5d5ffa57d1");
+  setUrl();
+   const response = await axios.get(fronturl+id+backurl);
    const result = await response.data;
+   
+   console.log(fronturl+id+backurl)
    console.log(result);
    setWeather(result);
  }
@@ -31,27 +46,11 @@ useEffect(() => {
         justifyContent="center"
         alignItems="baseline"
       >
-        {(typeof weather.main != 'undefined') ? (
+        {(typeof weather.list[0].main != 'undefined') ? (
           <WeatherCard 
-          weatherDetails={weather}/>
+          weatherDetails={weather.list[0]}/>
         ):
         null}
-         
-          {/* // city={weather.name}
-          // country={weather.sys.country}
-          // temperature={weather.main.temp}
-          // tempmax={weather.main.temp_max}
-          // tempmin={weather.main.temp_min}
-          // description={weather.weather[0].description}
-          // time={"feb 3"}
-          // pressure={weather.main.pressure}
-          // huminity={weather.main.humidity}
-          // visibility={weather.visibility}
-          // degree={weather.wind.deg}
-          // speed={weather.wind.speed}
-          // sunrise={weather.sys.sunrise}
-          // sunset={weather.sys.sunset}
-          > */}
         {/* <WeatherCard 
           city="Tokyo,JP"
           color="#6249cc"
