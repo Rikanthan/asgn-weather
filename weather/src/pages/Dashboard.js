@@ -44,21 +44,28 @@ export default function Dashboard({weather})
         {(typeof weather.cnt != 'undefined' && !click ) ? (
           <WeatherCard 
           weatherDetails={weather.list[0]}
-          onClick = {(e)=>{
-                setClick(true)
-                  setIndex(0)
-                  console.log(index)
-          }}>
+          >
+              {
+                  onclick =()=>{
+                    setClick(true)
+                    setIndex(0)
+                    console.log(index)
+                  }
+              }
               </WeatherCard>
         ):
         null}
         {(typeof weather.cnt != 'undefined' && !click) ? (
           <WeatherCard 
           weatherDetails={weather.list[1]}
-          onclick = {()=>{
-            setClick(true)
-            setIndex(1)
-        }}>
+       >
+              {
+                  onclick =()=>{
+                    setClick(true)
+                    setIndex(1)
+                    console.log(index)
+                  }
+              }
         </WeatherCard>
         ):
         null}
@@ -126,6 +133,7 @@ export default function Dashboard({weather})
               </WeatherCard>
         ):
         null}
+       
         {(typeof weather.cnt != 'undefined'  && click) ? (
         <SingleWeatherCard 
         weatherDetails = {weather.list[index]}
@@ -136,7 +144,7 @@ export default function Dashboard({weather})
               }}
               </SingleWeatherCard>
       ):
-      null}
+      null} 
 
       </Grid>
       </>

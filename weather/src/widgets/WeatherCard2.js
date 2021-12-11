@@ -26,7 +26,7 @@ const SingleWeatherCard = ({ weatherDetails }, props) => (
     style={{
       border: 1,
       borderRadius: 5,
-      backgroundColor: intToRGB(hashCode(weatherDetails.name+weatherDetails.sys.country)),
+      backgroundColor: intToRGB(hashCode(weatherDetails.name+weatherDetails.sys.country+"sun")),
       marginBottom: 120,
     }}
     direction="column"

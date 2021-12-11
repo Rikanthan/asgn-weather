@@ -1,5 +1,5 @@
 import { Card, Divider, Grid, Paper, Typography } from "@mui/material";
-import Image from "../cld.png";
+import Image from "../newbl.png";
 import { TiLocationArrowOutline } from "react-icons/ti";
 import { useState } from "react";
 import SingleWeatherCard from "./WeatherCard2";
@@ -21,7 +21,7 @@ function intToRGB(i) {
 
 
 
-export default function WeatherCard  ({ weatherDetails },props) {
+export default function WeatherCard  ({ weatherDetails }) {
 
   const [click,setClick] = useState(false);
   return(
@@ -33,7 +33,7 @@ export default function WeatherCard  ({ weatherDetails },props) {
           border: 1,
           borderRadius: 5,
           backgroundColor: intToRGB(
-            hashCode(weatherDetails.name + weatherDetails.sys.country )
+            hashCode(weatherDetails.name + weatherDetails.sys.country +"sun" )
           ),
           backgroundImage: `url(${Image})`,
           margin: 10,
@@ -42,7 +42,7 @@ export default function WeatherCard  ({ weatherDetails },props) {
         justifyContent="space-between"
         alignItems="start"
       >
-        {onclick = props.onClick}
+        {/* {onclick =  props.onClick} */}
         <Grid
           container
           direction="row"
@@ -65,10 +65,10 @@ export default function WeatherCard  ({ weatherDetails },props) {
             justifyContent="space-between"
             alignItems="baseline"
           >
-            <Typography variant="h6">
+            <Typography variant="h6" color={"white"}>
               {weatherDetails.name},{weatherDetails.sys.country}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" color={"white"}>
               {new Date(weatherDetails.dt * 1000).toLocaleTimeString("en-IN", {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -89,7 +89,7 @@ export default function WeatherCard  ({ weatherDetails },props) {
                 src={`http://openweathermap.org/img/wn/${weatherDetails.weather[0].icon}@2x.png`}
                 width={50}
               ></img>
-              <Typography variant="body1">
+              <Typography variant="body1" color={"white"}>
                 {weatherDetails.weather[0].description}
               </Typography>
             </Grid>
@@ -101,14 +101,14 @@ export default function WeatherCard  ({ weatherDetails },props) {
             textAlign="left"
             alignItems="baseline"
           >
-            <Typography variant="h4" paddingBottom={2}>
-              {weatherDetails.main.temp}°C
+            <Typography variant="h4" paddingBottom={2} color={"white"}>
+              {parseInt( weatherDetails.main.temp,10)}°C
             </Typography>
-            <Typography variant="body2">
-              Temp Min:{weatherDetails.main.temp_min}°C
+            <Typography variant="body2" color={"white"}>
+              Temp Min:{parseInt( weatherDetails.main.temp_min,10)}°C
             </Typography>
-            <Typography variant="body2">
-              Temp Max:{weatherDetails.main.temp_max}°C
+            <Typography variant="body2" color={"white"}>
+              Temp Max:{parseInt( weatherDetails.main.temp_max,10)}°C
             </Typography>
           </Grid>
         </Grid>
