@@ -21,7 +21,7 @@ function intToRGB(i) {
 
 
 
-export default function WeatherCard  ({ weatherDetails }) {
+export default function WeatherCard  ({weatherDetails}) {
 
   const [click,setClick] = useState(false);
   return(
@@ -49,7 +49,7 @@ export default function WeatherCard  ({ weatherDetails }) {
           justifyContent="space-between"
           alignItems="baseline"
         >
-          <Typography />
+          <Typography >1</Typography>
           <AiOutlineClose/>
         </Grid>
         <Grid

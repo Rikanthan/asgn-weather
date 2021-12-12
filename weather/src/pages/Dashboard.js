@@ -32,120 +32,21 @@ export default function Dashboard({weather})
         justifyContent="center"
         alignItems="baseline"
       >
-        {/* {( weather.list.map((element,index)=> 
+        {( weather.list.map((element,index)=> 
          {
-          console.log(element.name);
+          console.log(element);
           console.log(index);
-           <WeatherCard 
-            weatherDetails={element}
-            />
+          {
+            return (typeof weather.cnt != 'undefined' && !click) ? 
+           (
+            <WeatherCard 
+            weatherDetails={weather.list[index]}
+         >
+          </WeatherCard>
+          ):
+          null}
          } ))
-        } */}
-        {(typeof weather.cnt != 'undefined' && !click ) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[0]}
-          >
-              {
-                  onclick =()=>{
-                    setClick(true)
-                    setIndex(0)
-                    console.log(index)
-                  }
-              }
-              </WeatherCard>
-        ):
-        null}
-        {(typeof weather.cnt != 'undefined' && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[1]}
-       >
-              {
-                  onclick =()=>{
-                    setClick(true)
-                    setIndex(1)
-                    console.log(index)
-                  }
-              }
-        </WeatherCard>
-        ):
-        null}
-        {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[2]}
-           onclick = {
-               () =>{
-                   setClick(true)
-                   setIndex(2)
-                   console.log(index)
-               }
-           }    >
-              </WeatherCard>
-        ):
-        null}
-        {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[3]}>
-              {onclick =()=>{
-                  setClick(true)
-                  setIndex(3)
-              }}
-              </WeatherCard>
-        ):
-        null}
-         {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[4]}>
-              {onclick =()=>{
-                  setClick(true)
-                  setIndex(4)
-              }}
-              </WeatherCard>
-        ):
-        null}
-        {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[5]}>
-              {onclick =()=>{
-                  setClick(true)
-                  setIndex(5)
-              }}
-              </WeatherCard>
-        ):
-        null}
-         {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[6]}>
-              {onclick =()=>{
-                  setClick(true)
-                  setIndex(6)
-                  console.log(index);
-              }}
-              </WeatherCard>
-        ):
-        null}
-        {(typeof weather.cnt != 'undefined'  && !click) ? (
-          <WeatherCard 
-          weatherDetails={weather.list[7]} >
-              {onclick =()=>{
-                  setClick(true)
-                  setIndex(7)
-              }}
-              </WeatherCard>
-        ):
-        null}
-       
-        {(typeof weather.cnt != 'undefined'  && click) ? (
-        <SingleWeatherCard 
-        weatherDetails = {weather.list[index]}
-        >
-              {onclick =()=>{
-                  setClick(false)
-                  setIndex(0)
-              }}
-              </SingleWeatherCard>
-      ):
-      null} 
-
+        }
       </Grid>
       </>
     );
