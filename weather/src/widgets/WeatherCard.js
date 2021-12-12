@@ -1,8 +1,8 @@
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid, IconButton, Typography, Zoom } from "@mui/material";
 import Image from "../newbl.png";
 import { TiLocationArrowOutline } from "react-icons/ti";
 import { useState  } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose ,AiOutlineArrowRight} from "react-icons/ai";
 
 function hashCode(str) {
   var hash = 0;
@@ -18,9 +18,10 @@ function intToRGB(i) {
   return "#" + "00000".substring(0, 6 - c.length) + c;
 }
 
-export default function WeatherCard  ({weatherDetails},props) {
-  const [id,setId] = useState(0);
-  const [click,setClick] = useState(false);
+export default function WeatherCard(props) {
+  const weatherDetails = props.weatherDetails;
+  const onpress = props.onpress;
+  const index = props.index;
   return(
     (
       <Grid
@@ -39,16 +40,16 @@ export default function WeatherCard  ({weatherDetails},props) {
         justifyContent="space-between"
         alignItems="start"
       >
-        {onclick = 
-          props.onclick
-        }
         <Grid
           container
           direction="row"
           justifyContent="space-between"
           alignItems="baseline"
         >
-          <Typography />
+          <IconButton 
+          onClick={onpress}>
+           <AiOutlineArrowRight/>
+          </IconButton>
           <AiOutlineClose/>
         </Grid>
         <Grid
