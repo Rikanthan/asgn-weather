@@ -44,12 +44,12 @@ function App() {
       <Grid
         container
         direction="row"
-        padding={5}
+        padding={2}
         justifyContent="center"
-        alignItems="start"
+        alignItems="center"
       >
         <img src="http://openweathermap.org/img/wn/10d@2x.png"></img>
-        <Typography variant="h5" color="white" paddingTop={5}>
+        <Typography variant="h5" color="white">
           Weather App
         </Typography>
       </Grid>

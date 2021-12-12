@@ -9,7 +9,7 @@ export default function Dashboard({ weather }) {
   const [idx, setIdx] = useState(-1);
   return (
     <>
-      {!click && idx < -1?
+      {!click && idx < 0?
         <Grid
           container
           spacing={1}
@@ -39,11 +39,7 @@ export default function Dashboard({ weather }) {
                 index = {index}
                 onpress ={() => {
                   setClick(true);
-                  console.log(click);
-                  console.log(index);
                   setIdx(index);
-                  console.log(idx);
-                  console.log(click);
                 }}
 
               >
@@ -62,14 +58,12 @@ export default function Dashboard({ weather }) {
           direction="row"
           justifyContent="center"
           alignItems="baseline"
-        >
-          
+        >   
           <SingleWeatherCard
             weatherDetails={weather.list[idx]}
             onpress ={() => {
               setClick(false);
               setIdx(-1);
-              console.log(click);
             }}>
           </SingleWeatherCard>
         </Grid> : null}

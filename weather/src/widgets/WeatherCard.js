@@ -1,8 +1,8 @@
 import { Divider, Grid, IconButton, Typography, Zoom } from "@mui/material";
 import Image from "../newbl.png";
 import { TiLocationArrowOutline } from "react-icons/ti";
-import { useState  } from "react";
-import { AiOutlineClose ,AiOutlineArrowRight} from "react-icons/ai";
+import { useState } from "react";
+import { AiOutlineClose, AiOutlineArrowRight } from "react-icons/ai";
 
 function hashCode(str) {
   var hash = 0;
@@ -21,8 +21,7 @@ function intToRGB(i) {
 export default function WeatherCard(props) {
   const weatherDetails = props.weatherDetails;
   const onpress = props.onpress;
-  const index = props.index;
-  return(
+  return (
     (
       <Grid
         container
@@ -31,7 +30,7 @@ export default function WeatherCard(props) {
           border: 1,
           borderRadius: 5,
           backgroundColor: intToRGB(
-            hashCode(weatherDetails.name + weatherDetails.sys.country +"sun" )
+            hashCode(weatherDetails.name + weatherDetails.sys.country + "sun")
           ),
           backgroundImage: `url(${Image})`,
           margin: 10,
@@ -46,11 +45,13 @@ export default function WeatherCard(props) {
           justifyContent="space-between"
           alignItems="baseline"
         >
-          <IconButton 
-          onClick={onpress}>
-           <AiOutlineArrowRight/>
+          <IconButton
+            onClick={onpress}>
+            <AiOutlineArrowRight />
           </IconButton>
-          <AiOutlineClose/>
+          <IconButton>
+            <AiOutlineClose />
+          </IconButton>
         </Grid>
         <Grid
           container
@@ -102,13 +103,13 @@ export default function WeatherCard(props) {
             alignItems="baseline"
           >
             <Typography variant="h4" paddingBottom={2} color={"white"}>
-              {parseInt( weatherDetails.main.temp,10)}°C
+              {parseInt(weatherDetails.main.temp, 10)}°C
             </Typography>
             <Typography variant="body2" color={"white"}>
-              Temp Min:{parseInt( weatherDetails.main.temp_min,10)}°C
+              Temp Min:{parseInt(weatherDetails.main.temp_min, 10)}°C
             </Typography>
             <Typography variant="body2" color={"white"}>
-              Temp Max:{parseInt( weatherDetails.main.temp_max,10)}°C
+              Temp Max:{parseInt(weatherDetails.main.temp_max, 10)}°C
             </Typography>
           </Grid>
         </Grid>
@@ -130,7 +131,7 @@ export default function WeatherCard(props) {
               {"Pressure: "}{weatherDetails.main.pressure}hPa
             </Typography>
             <Typography variant="body2" color="white">
-             {"Humidity: "}  {weatherDetails.main.humidity}%
+              {"Humidity: "}  {weatherDetails.main.humidity}%
             </Typography>
             <Typography variant="body2" color="white">
               {"Visibility: "} {weatherDetails.visibility / 1000}km
@@ -176,7 +177,7 @@ export default function WeatherCard(props) {
                 "en-IN",
                 { hour: "2-digit", minute: "2-digit" }
               )}
-              {}
+              { }
             </Typography>
             <Typography variant="body2" color="white">
               {"Sunset: "}

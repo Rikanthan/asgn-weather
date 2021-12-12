@@ -1,7 +1,6 @@
 import { Divider, Grid, IconButton, Typography } from "@mui/material";
-import { AiOutlineArrowLeft} from "react-icons/ai";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { TiLocationArrowOutline } from "react-icons/ti";
-
 
 function hashCode(str) {
   var hash = 0;
@@ -19,51 +18,48 @@ function intToRGB(i) {
   return "#" + "00000".substring(0, 6 - c.length) + c;
 }
 
-
-
-export default function SingleWeatherCard(props)
-{
+export default function SingleWeatherCard(props) {
   const weatherDetails = props.weatherDetails;
-    const onpress = props.onpress;
-  return(
-    
+  const onpress = props.onpress;
+  return (
+
     <Grid
       container
       md={6}
       style={{
         border: 1,
         borderRadius: 5,
-        backgroundColor: intToRGB(hashCode(weatherDetails.name+weatherDetails.sys.country+"sun")),
-        marginBottom: 120,
+        backgroundColor: intToRGB(hashCode(weatherDetails.name + weatherDetails.sys.country + "sun")),
+        marginBottom: 85,
       }}
       direction="column"
       justifyContent="space-between"
       alignItems="center"
     >
-        <Grid
+      <Grid
         container
         direction="row"
         justifyContent="space-between"
         alignItems="baseline"
       >
-          <IconButton onClick={onpress}>
-          <AiOutlineArrowLeft color="white"/>
-          </IconButton>
+        <IconButton onClick={onpress}>
+          <AiOutlineArrowLeft color="white" />
+        </IconButton>
       </Grid>
-       <Typography variant="h6" color={"white"}>
-            {weatherDetails.name},{weatherDetails.sys.country}
-          </Typography>
-          <Typography variant="body2" color={"white"}>
-          {new Date(weatherDetails.dt * 1000).toLocaleTimeString(
-              "en-IN",
-              { hour: "2-digit", minute: "2-digit" },
-            )}
-            {", "}
-          {new Date(weatherDetails.sys.sunset * 1000).toLocaleDateString(
-            'en-US',{day:"numeric" ,month:"short"}
-            )}
-          </Typography>
-      
+      <Typography variant="h6" color={"white"}>
+        {weatherDetails.name},{weatherDetails.sys.country}
+      </Typography>
+      <Typography variant="body2" color={"white"}>
+        {new Date(weatherDetails.dt * 1000).toLocaleTimeString(
+          "en-IN",
+          { hour: "2-digit", minute: "2-digit" },
+        )}
+        {", "}
+        {new Date(weatherDetails.sys.sunset * 1000).toLocaleDateString(
+          'en-US', { day: "numeric", month: "short" }
+        )}
+      </Typography>
+
       <Grid
         container
         direction="row"
@@ -81,7 +77,7 @@ export default function SingleWeatherCard(props)
             direction="column"
             justifyContent="space-between"
             alignItems="center"
-            style={{paddingBottom: 30,paddingTop:30}}
+            style={{ paddingBottom: 30, paddingTop: 30 }}
           >
             <img
               src={`http://openweathermap.org/img/wn/${weatherDetails.weather[0].icon}@2x.png`}
@@ -93,16 +89,16 @@ export default function SingleWeatherCard(props)
           </Grid>
         </Grid>
         <Divider orientation="vertical" variant="middle"
-         flexItem color="white" 
-         style={{margin:30}}/>
+          flexItem color="white"
+          style={{ margin: 30 }} />
         <Grid
           item
-          style={{ paddingBottom: 30,paddingTop:30}}
+          style={{ paddingBottom: 30, paddingTop: 30 }}
           direction="column"
           textAlign="left"
           alignItems="baseline"
         >
-          <Typography variant="h4" paddingBottom={2} color={"white"}> 
+          <Typography variant="h4" paddingBottom={2} color={"white"}>
             {weatherDetails.main.temp}°C
           </Typography>
           <Typography variant="body2" color={"white"}>
@@ -167,7 +163,7 @@ export default function SingleWeatherCard(props)
               "en-IN",
               { hour: "2-digit", minute: "2-digit" }
             )}
-            {}
+            { }
           </Typography>
           <Typography variant="body2" color="white">
             {"Sunset: "}
